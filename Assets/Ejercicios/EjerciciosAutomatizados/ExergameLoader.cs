@@ -110,10 +110,12 @@ public class ExergameLoader : MonoBehaviour
     {
         return articulaciones;
     }
+
     public static float[] getPositionCamera()
     {
         return positionCamera;
     }
+
     public static float[] getRotationCamera()
     {
         return rotationCamera;
