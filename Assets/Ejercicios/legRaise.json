@@ -1,0 +1,12 @@
+{
+    "Description": "Leg raise",
+    "Camera_setup": {
+        "Id_camera": "camera1",
+        "Position": [0.02, 1.459, 3.4],
+        "Rotation": [0, 180, 0]
+    },
+    "Score": {
+        "Activated": true
+    },
+    "Levels": 2
+}

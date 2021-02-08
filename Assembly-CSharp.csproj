@@ -65,13 +65,11 @@
   <ItemGroup>
     <Compile Include="Assets\Config\ConfigLoader.cs" />
     <Compile Include="Assets\Config\Configs.cs" />
-    <Compile Include="Assets\Ejercicios\EjElevacionPierna.cs" />
-    <Compile Include="Assets\Ejercicios\EjerciciosAutomatizados\ExergameLoader.cs" />
-    <Compile Include="Assets\Ejercicios\EjerciciosAutomatizados\Exergames.cs" />
-    <Compile Include="Assets\Ejercicios\EjerciciosAutomatizados\MainCamera.cs" />
-    <Compile Include="Assets\Ejercicios\EjerciciosAutomatizados\SphereJoint.cs" />
-    <Compile Include="Assets\Ejercicios\Pie.cs" />
-    <Compile Include="Assets\Ejercicios\Rodilla.cs" />
+    <Compile Include="Assets\Ejercicios\Exergame.cs" />
+    <Compile Include="Assets\Ejercicios\ExergameLoader.cs" />
+    <Compile Include="Assets\Ejercicios\ExergameLvl.cs" />
+    <Compile Include="Assets\Ejercicios\MainCamera.cs" />
+    <Compile Include="Assets\Ejercicios\SphereJoint.cs" />
     <Compile Include="Assets\Scripts\BackgroundData.cs" />
     <Compile Include="Assets\Scripts\BackgroundDataProvider.cs" />
     <Compile Include="Assets\Scripts\Body.cs" />

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 672b1dff23536e84f8e123595d481e10
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - esferaInicial: {instanceID: 0}
+  - textoRepeticiones: {instanceID: 0}
+  - textoPuntuacion: {instanceID: 0}
+  - textoTiempo: {instanceID: 0}
+  - textoMensaje: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
