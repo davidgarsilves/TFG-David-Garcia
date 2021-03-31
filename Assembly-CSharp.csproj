@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Cafe Interior\Scripts\RotateMoveCamera.cs" />
     <Compile Include="Assets\Config\ConfigLoader.cs" />
     <Compile Include="Assets\Config\Configs.cs" />
     <Compile Include="Assets\Ejercicios\Exergame.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Assets\Ejercicios\ExergameLvl.cs" />
     <Compile Include="Assets\Ejercicios\MainCamera.cs" />
     <Compile Include="Assets\Ejercicios\SphereJoint.cs" />
+    <Compile Include="Assets\Scripts\AvatarTracker.cs" />
     <Compile Include="Assets\Scripts\BackgroundData.cs" />
     <Compile Include="Assets\Scripts\BackgroundDataProvider.cs" />
     <Compile Include="Assets\Scripts\Body.cs" />
@@ -80,11 +82,12 @@
     <Compile Include="Assets\Scripts\PuppetAvatar.cs" />
     <Compile Include="Assets\Scripts\SkeletalTrackingProvider.cs" />
     <Compile Include="Assets\Scripts\TrackerHandler.cs" />
-    <Compile Include="Assets\Scripts\zzzzzzzfinal1.cs" />
     <Compile Include="Assets\Skeleton\CameraFlipper.cs" />
     <Compile Include="Assets\Skeleton\Skeleton.cs" />
     <Compile Include="Assets\Skeleton\SkeletonPosition.cs" />
     <Compile Include="Assets\Skeleton\Smoother.cs" />
+    <None Include="Assets\Apartment pack\Documentation.txt" />
+    <None Include="Assets\Cafe Interior\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/david/Documents/GitHub/TFG-David-Garcia/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

@@ -27,9 +27,8 @@ public class main : MonoBehaviour
             {
                 if (m_lastFrameData.NumOfBodies != 0)
                 {
-                    //m_tracker.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData);  tambien he cambiado en la escena objeto main, script main, tracker kinect4 por paciente generico
-
-                    m_tracker.GetComponent<zzzzzzzfinal1>().updateTracker(m_lastFrameData);
+                    //m_tracker.GetComponent<TrackerHandler>().updateTracker(m_lastFrameData);  //tambien he cambiado en la escena objeto main, script main, tracker kinect4 por paciente generico
+                    m_tracker.GetComponent<AvatarTracker>().updateTracker(m_lastFrameData);
                 }
             }
         }

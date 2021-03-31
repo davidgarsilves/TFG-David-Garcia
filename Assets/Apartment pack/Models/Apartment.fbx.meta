@@ -1,0 +1,355 @@
+fileFormatVersion: 2
+guid: 6a65d3a0211d033418f3c7f370dff3e7
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BedMat
+    second: {fileID: 2100000, guid: 3044b443a4039a14bb20787baa0d648a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BedSheet
+    second: {fileID: 2100000, guid: 4dfd86f2c47edfb41b415025e9af4e7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CentertableMat
+    second: {fileID: 2100000, guid: a87f8b5d161b6d240b4269e78b862923, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Curtains
+    second: {fileID: 2100000, guid: 41a3bfff94e1fdf4d9f327a5caeeba55, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DiningTableMat
+    second: {fileID: 2100000, guid: 3aa4ef39efe2c9f4eb0543771da22eb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorMat
+    second: {fileID: 2100000, guid: 01c28421481a6d84cb545d63050f9a6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: 1fbbc0f24cecb8b4eb63aa893189c5d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 34d4eff8fb57a4d4b9bde51df6072790, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glow
+    second: {fileID: 2100000, guid: dce7671d271d8494da8a47e6d77a4247, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KitchenChrome
+    second: {fileID: 2100000, guid: 6dcc6e4abacf1c344ad3109aa455ce58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: KitchenElectronics
+    second: {fileID: 2100000, guid: 94f29491b69d3fc4d92e775304f89b91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_Cabinets
+    second: {fileID: 2100000, guid: 6a36afe7746d9794487a98501ee53db9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mirror1
+    second: {fileID: 2100000, guid: 8716bbdba18fb2f43ad7a84c90739067, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scurting
+    second: {fileID: 2100000, guid: b85fd4db37db4f544a44927a5c55e01e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shower_curtains
+    second: {fileID: 2100000, guid: a258f0a746519b74f9e745b3d9266f28, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sink
+    second: {fileID: 2100000, guid: a5b0d677f0d3d2a4e84a6f2767982b88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Slab_mat
+    second: {fileID: 2100000, guid: d6900dd9a51f9a747b566fef751adf19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SofaMat
+    second: {fileID: 2100000, guid: aa33a3bc0da6f1740a386def9ed6c3e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TelevisionMat
+    second: {fileID: 2100000, guid: 0fd0da4bb804298459f833282a18f366, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walls
+    second: {fileID: 2100000, guid: c0e11d93d41947a439c8f7e55c1315f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Washroom_mat
+    second: {fileID: 2100000, guid: e339fd2c3638ff841bbe92692be83b73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindowsMat
+    second: {fileID: 2100000, guid: 16257a86736a1b94c8a325dffc1ff45b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ceilling_mat
+    second: {fileID: 2100000, guid: 0f1d9e1b8c9339547809ef00ada14e8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pictures
+    second: {fileID: 2100000, guid: 6eb8b666c3519cd4d9c9106917599f2a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: toilet
+    second: {fileID: 2100000, guid: ffbec875cc325e743b753c3d3800863f, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BedSheet
+    second: {fileID: 2800000, guid: 59493adabd3755540975344d583bea2e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BedSheet_N
+    second: {fileID: 2800000, guid: 6adfa13d40ada3b43b0e81bf67972cac, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bed_A
+    second: {fileID: 2800000, guid: e048a2099601d3747be7b9f897de451e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Bed_N
+    second: {fileID: 2800000, guid: cd7893ea7148ffb47a97874bd34d4147, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cabinet_A_KitchenChrome
+    second: {fileID: 2800000, guid: a75a2f86ba7d5c343b3636696b08ee5c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cabinet_A_Kitchen_Cabinets
+    second: {fileID: 2800000, guid: 29151d25a92d3274ea7adcd6bebf4833, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CenterTable_A
+    second: {fileID: 2800000, guid: 854b2dd247b03024384de9327dacbc7c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: CenterTable_N
+    second: {fileID: 2800000, guid: 2c90f1c1119dd0240b518d1a27b5faa4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Curtain_N_PNG
+    second: {fileID: 2800000, guid: dec40ec9eb69b364bb52dd1270e3cb2f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Curtain_PNG
+    second: {fileID: 2800000, guid: 539710c9ef58bd0429f0a5010ff720be, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Curtain_R
+    second: {fileID: 2800000, guid: e7be6102551e19b4c8a71c9d7d609b1a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DiningTable_A
+    second: {fileID: 2800000, guid: 7b5e06726af4b3a4ebcdcda62210c580, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: DiningTable_N
+    second: {fileID: 2800000, guid: 4139c464c7f7a234fb949593f5df41ff, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Door_A
+    second: {fileID: 2800000, guid: e48a1f2c5b7f2524ba2f327f516d1007, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floor_N
+    second: {fileID: 2800000, guid: a3174acbc18c06d408bba71d29962ce3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Floor_PNG
+    second: {fileID: 2800000, guid: 214c2bec370424d4f8e633e14f902cd0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_App
+    second: {fileID: 2800000, guid: ceaefc08f363c5e42ae580ab8948de30, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Marble_A
+    second: {fileID: 2800000, guid: 9d7882b5c3fe59a48bfb481a29555f37, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Pictures
+    second: {fileID: 2800000, guid: ffba9cea543826647a20f75cc3ae89b7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Sink_A
+    second: {fileID: 2800000, guid: 2a1650b27b9261d4a92a0cfbf725d008, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Sofa_A
+    second: {fileID: 2800000, guid: cdf916e9b43dd8c479de93496c61db8c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Sofa_N
+    second: {fileID: 2800000, guid: bd115c1879071124e826dc52913fc229, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Television_A
+    second: {fileID: 2800000, guid: 010dd4d5cda94d042955f81204ed1fc1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Toilet_A
+    second: {fileID: 2800000, guid: 120b29881a474234ab189518478daab3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Washroom_A
+    second: {fileID: 2800000, guid: 393d2fe35d54a6f48aef581aab55e4f9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Window_A
+    second: {fileID: 2800000, guid: 389cea0c4f3574047b6e6bd5228b3a90, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wall_Texture_PNG
+    second: {fileID: 2800000, guid: b8b1fbc40e07c2a4199b5e14640cba84, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 64
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
