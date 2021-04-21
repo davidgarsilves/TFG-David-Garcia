@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Aldea.unity
+- path: Assets/Scenes/Apartamento.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

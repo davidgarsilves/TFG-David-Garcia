@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Cafe Interior\Scripts\RotateMoveCamera.cs" />
     <Compile Include="Assets\Config\ConfigLoader.cs" />
     <Compile Include="Assets\Config\Configs.cs" />
     <Compile Include="Assets\Ejercicios\Exergame.cs" />
@@ -85,6 +86,8 @@
     <Compile Include="Assets\Skeleton\Skeleton.cs" />
     <Compile Include="Assets\Skeleton\SkeletonPosition.cs" />
     <Compile Include="Assets\Skeleton\Smoother.cs" />
+    <None Include="Assets\Apartment pack\Documentation.txt" />
+    <None Include="Assets\Cafe Interior\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/david/Documents/GitHub/TFG-David-Garcia/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
