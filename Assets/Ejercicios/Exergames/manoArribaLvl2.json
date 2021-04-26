@@ -1,0 +1,40 @@
+{
+    "Level": 2,
+    "ExergameName": "manoArriba",
+    "Clock": {
+        "Activated": true,
+        "Countdown": 60
+    },
+    "Max_number_repetitions": {
+        "Activated": true,
+        "Repetitions": 6
+    },
+    "Trajectories": {
+            "Id_trajectory": "mano-derecha-arriba",
+            "Positions": [
+                {
+                    "X": -0.77,
+                    "Y": 0.8,
+                    "Z": 1.5
+                },
+                {
+                    "X": -0.77,
+                    "Y": 1.1,
+                    "Z": 1.5
+                },
+                {
+                    "X": -0.77,
+                    "Y": 1.4,
+                    "Z": 1.5
+                }
+            ]
+     },
+    "Gameplay": [
+        {
+            "Id_trajectory": "mano-derecha-arriba",
+            "Involved_joint": "finger11.r",
+            "Repetition_increment": 1,
+            "Score_increment": 25
+        }
+    ]
+}

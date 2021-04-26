@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using TMPro;
 
 public class ExergameLoader : MonoBehaviour
 {
     public GameObject esfera;
-    public Text textoRepeticiones;
-    public Text textoPuntuacion;
-    public Text textoTiempo;
+    public TextMeshProUGUI textoDescripcion;
+    public TextMeshProUGUI textoRepeticiones;
+    public TextMeshProUGUI textoPuntuacion;
+    public TextMeshProUGUI textoTiempo;
     public Text textoMensaje;
 
     private static string articulaciones;
@@ -22,16 +24,16 @@ public class ExergameLoader : MonoBehaviour
     private int esferasActivadas = 0;
     private Boolean repeticionCompleta = false;
 
-    private const string exergameDataFileName = "legRaise.json";
-    private const string levelFileName = "legRaiseLvl1.json";
+    private const string exergameDataFileName = "manoArriba.json";
+    private const string levelFileName = "manoArribaLvl1.json";
     private Exergame exergame = new Exergame(); 
     private ExergameLvl level = new ExergameLvl();
     private List<GameObject> posiciones = new List<GameObject>();
 
     void Awake()
     {
-        string exergameFilePath = Path.Combine("Assets/Ejercicios", exergameDataFileName);
-        string levelFilePath = Path.Combine("Assets/Ejercicios", levelFileName);
+        string exergameFilePath = Path.Combine("Assets/Ejercicios/Exergames", exergameDataFileName);
+        string levelFilePath = Path.Combine("Assets/Ejercicios/Exergames", levelFileName);
         
         if (File.Exists(exergameFilePath) & File.Exists(levelFilePath))
         {
@@ -48,6 +50,7 @@ public class ExergameLoader : MonoBehaviour
             articulaciones = level.Gameplay[0].Involved_joint;
             tiempo = level.Clock.Countdown;
             textoTiempo.text = tiempo.ToString();
+            textoDescripcion.text = exergame.Description;
 
             for (int i = 0; i < level.Trajectories.Positions.Count; i++)
             {
@@ -69,6 +72,7 @@ public class ExergameLoader : MonoBehaviour
         if (tiempo >= 0 & repeticiones < level.Max_number_repetitions.Repetitions) { 
             tiempo -= Time.deltaTime;
             textoTiempo.text = tiempo.ToString("f0");
+            textoRepeticiones.text = repeticiones.ToString() + " / " + level.Max_number_repetitions.Repetitions.ToString();
             Partida();
         }
         else
@@ -87,7 +91,7 @@ public class ExergameLoader : MonoBehaviour
             if (esferasActivadas == level.Trajectories.Positions.Count-1)
             {
                 repeticiones += level.Gameplay[0].Repetition_increment;
-                textoRepeticiones.text = repeticiones.ToString();
+                textoRepeticiones.text = repeticiones.ToString() + " / "+ level.Max_number_repetitions.Repetitions.ToString();
                 IncrementarPuntuacion(exergame.Score.Activated);
                 Invoke(nameof(ReiniciarEsferas), 2.0f);
                 esferasActivadas = 0;

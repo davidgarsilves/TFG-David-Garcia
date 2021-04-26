@@ -10,7 +10,7 @@
         "Repetitions": 5
     },
     "Trajectories": {
-            "Id_trajectory": "rightFoot-raise",
+            "Id_trajectory": "leftFoot-raise",
             "Positions": [
                 {
                     "X": -0.77,
@@ -32,8 +32,8 @@
      },
     "Gameplay": [
         {
-            "Id_trajectory": "rightFoot-raise",
-            "Involved_joint": "rightFoot",
+            "Id_trajectory": "leftFoot-raise",
+            "Involved_joint": "foot.l",
             "Repetition_increment": 1,
             "Score_increment": 25
         }
