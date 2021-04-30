@@ -34,6 +34,7 @@ public class Gameplay
 {
     public string Id_trajectory = "";
     public string Involved_joint = "";
+    public List<string> Joints = null;
     public int Repetition_increment = 0;
     public int Score_increment = 0;
 }

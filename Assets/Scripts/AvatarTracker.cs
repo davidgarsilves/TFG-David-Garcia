@@ -10,6 +10,8 @@ public class AvatarTracker : MonoBehaviour
 
     Dictionary<JointId, ModelJoint> jointsRigged = new Dictionary<JointId, ModelJoint>();
 
+    public List<string> jointsNeeded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,8 @@ public class AvatarTracker : MonoBehaviour
             modelJoints[i].baseRotOffset = modelJoints[i].bone.rotation;
             jointsRigged.Add(modelJoints[i].jointId, modelJoints[i]);
         }
+
+        jointsNeeded = ExergameLoader.getJointList();
     }
 
     public void updateTracker(BackgroundData trackerFrameData)
@@ -55,15 +59,18 @@ public class AvatarTracker : MonoBehaviour
         //transform.position = torsoPos;
 
         int jointNum;
+        bool esNecesaria = false;
 
         foreach (var riggedJoint in jointsRigged)
         {
-            jointNum = (int)riggedJoint.Key;
-            ModelJoint modelJoint = riggedJoint.Value;
-            Quaternion jointOrient = new Quaternion(skeleton.JointRotations[jointNum].X, skeleton.JointRotations[jointNum].Y, skeleton.JointRotations[jointNum].Z, skeleton.JointRotations[jointNum].W) * GetKinectTPoseOrientationInverse(riggedJoint.Key) * modelJoint.baseRotOffset;
-            modelJoint.bone.rotation = jointOrient;
+            esNecesaria = jointsNeeded.Contains(riggedJoint.Value.bone.name);
+            if (esNecesaria == true) {
+                jointNum = (int)riggedJoint.Key;
+                ModelJoint modelJoint = riggedJoint.Value;
+                Quaternion jointOrient = new Quaternion(skeleton.JointRotations[jointNum].X, skeleton.JointRotations[jointNum].Y, skeleton.JointRotations[jointNum].Z, skeleton.JointRotations[jointNum].W) * GetKinectTPoseOrientationInverse(riggedJoint.Key) * modelJoint.baseRotOffset;
+                modelJoint.bone.rotation = jointOrient;
+            }
         }
-
     }
 
     //Método obtenido del repositorio de bibigone llamado k4a.net, del script CharacterAnimator.cs

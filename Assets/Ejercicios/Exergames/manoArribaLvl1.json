@@ -3,7 +3,7 @@
     "ExergameName": "manoArriba",
     "Clock": {
         "Activated": true,
-        "Countdown": 90
+        "Countdown": 120
     },
     "Max_number_repetitions": {
         "Activated": true,
@@ -28,6 +28,12 @@
         {
             "Id_trajectory": "mano-derecha-arriba",
             "Involved_joint": "finger11.r",
+            "Joints": [
+                "uperarm.r",
+                "arm.r",
+                "uperarm.l",
+                "arm.l"
+            ],
             "Repetition_increment": 1,
             "Score_increment": 20
         }

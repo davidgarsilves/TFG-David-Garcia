@@ -33,6 +33,10 @@
         {
             "Id_trajectory": "mano-derecha-arriba",
             "Involved_joint": "finger11.r",
+            "Joints": [
+                "uperarm.r",
+                "arm.r"
+            ],
             "Repetition_increment": 1,
             "Score_increment": 25
         }

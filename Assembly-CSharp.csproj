@@ -79,9 +79,7 @@
     <Compile Include="Assets\Scripts\CustomColors.cs" />
     <Compile Include="Assets\Scripts\main.cs" />
     <Compile Include="Assets\Scripts\ModelJoint.cs" />
-    <Compile Include="Assets\Scripts\PuppetAvatar.cs" />
     <Compile Include="Assets\Scripts\SkeletalTrackingProvider.cs" />
-    <Compile Include="Assets\Scripts\TrackerHandler.cs" />
     <Compile Include="Assets\Skeleton\CameraFlipper.cs" />
     <Compile Include="Assets\Skeleton\Skeleton.cs" />
     <Compile Include="Assets\Skeleton\SkeletonPosition.cs" />
