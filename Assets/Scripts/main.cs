@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Microsoft.Azure.Kinect.BodyTracking;
+﻿using UnityEngine;
 
 public class main : MonoBehaviour
 {

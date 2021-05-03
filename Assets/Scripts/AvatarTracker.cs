@@ -10,7 +10,7 @@ public class AvatarTracker : MonoBehaviour
 
     Dictionary<JointId, ModelJoint> jointsRigged = new Dictionary<JointId, ModelJoint>();
 
-    public List<string> jointsNeeded;
+    private List<string> jointsNeeded;
 
     // Start is called before the first frame update
     void Start()

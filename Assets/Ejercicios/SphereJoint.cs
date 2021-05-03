@@ -27,8 +27,8 @@ public class SphereJoint : MonoBehaviour
                 particulasExplosion = Instantiate(explosion);
                 particulasExplosion.transform.position = gameObject.transform.position;
                 Destroy(particulasExplosion, 2.1f);
+                GetComponent<Renderer>().material.color = new Color(64f / 255f, 236f / 255f, 57f / 255f);
             }
-            GetComponent<Renderer>().material.color = new Color(64f / 255f, 236f / 255f, 57f / 255f);
         }
     }
 
