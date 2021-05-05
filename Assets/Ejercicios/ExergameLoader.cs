@@ -29,8 +29,8 @@ public class ExergameLoader : MonoBehaviour
     private int esferasActivadas = 0;
     private Boolean repeticionCompleta = false;
 
-    private const string exergameDataFileName = "manoArriba.json";
-    private const string levelFileName = "manoArribaLvl1.json";
+    private const string exergameDataFileName = "elevacionManoDerecha.json";
+    private const string levelFileName = "elevacionManoDerechaLvl3.json";
     private Exergame exergame = new Exergame(); 
     private ExergameLvl level = new ExergameLvl();
     private List<GameObject> posiciones = new List<GameObject>();
@@ -63,6 +63,7 @@ public class ExergameLoader : MonoBehaviour
             {
                 posiciones.Add(Instantiate(esfera));
                 posiciones[i].transform.position = new Vector3(level.Trajectories.Positions[i].X, level.Trajectories.Positions[i].Y, level.Trajectories.Positions[i].Z);
+                posiciones[i].transform.localScale = new Vector3(level.Scale, level.Scale, level.Scale);
                 posiciones[i].GetComponent<SphereCollider>().enabled = false;
             }
             posiciones[0].GetComponent<SphereCollider>().enabled = true;

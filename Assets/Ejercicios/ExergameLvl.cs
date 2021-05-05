@@ -44,6 +44,7 @@ public class ExergameLvl
 {
     public int Level = 0;
     public string ExergameName = "";
+    public float Scale = 0;
     public Clock Clock = null;
     public Max_number_repetitions Max_number_repetitions = null;
     public Trajectory Trajectories = null;

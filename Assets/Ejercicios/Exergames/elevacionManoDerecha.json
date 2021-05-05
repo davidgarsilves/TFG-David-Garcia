@@ -1,8 +1,8 @@
 {
-    "Description": "Atraviesa con la mano derecha los siguientes objetivos",
+    "Description": "Atraviesa con la mano derecha los objetivos desde abajo hacia arriba.",
     "Camera_setup": {
         "Id_camera": "camera1",
-        "Position": [0, 2.56, -4.71],
+        "Position": [0, 2.92, -2.88],
         "Rotation": [0, 0, 0]
     },
     "Score": {
