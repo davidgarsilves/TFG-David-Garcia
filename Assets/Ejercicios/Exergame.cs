@@ -15,6 +15,7 @@ public class Score
 [System.Serializable]
 public class Exergame
 {
+    public string Name = "";
     public string Description = "";
     public Camera_setup Camera_setup = new Camera_setup();
     public Score Score = null;

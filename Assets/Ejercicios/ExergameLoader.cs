@@ -30,7 +30,7 @@ public class ExergameLoader : MonoBehaviour
     private Boolean repeticionCompleta = false;
 
     private const string exergameDataFileName = "elevacionManoDerecha.json";
-    private const string levelFileName = "elevacionManoDerechaLvl3.json";
+
     private Exergame exergame = new Exergame(); 
     private ExergameLvl level = new ExergameLvl();
     private List<GameObject> posiciones = new List<GameObject>();
@@ -39,25 +39,63 @@ public class ExergameLoader : MonoBehaviour
     void Awake()
     {
         string exergameFilePath = Path.Combine("Assets/Ejercicios/Exergames", exergameDataFileName);
-        string levelFilePath = Path.Combine("Assets/Ejercicios/Exergames", levelFileName);
         
-        if (File.Exists(exergameFilePath) & File.Exists(levelFilePath))
+        if (File.Exists(exergameFilePath))
         {
             string dataExergameAsJson = File.ReadAllText(exergameFilePath);
             exergame = JsonUtility.FromJson<Exergame>(dataExergameAsJson);
             UnityEngine.Debug.Log("Successfully loaded data exergame file.");
 
+            positionCamera = exergame.Camera_setup.Position;
+            rotationCamera = exergame.Camera_setup.Rotation;
+            textoDescripcion.text = exergame.Description;
+
+            CargarDatosPartida(exergame.Name + "Lvl" + Math.Ceiling(Decimal.Divide(exergame.Levels, 2))+ ".json");
+        }
+        else
+        {
+            Debug.LogError("Cannot load exergame data!");
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (tiempo >= 0 & repeticiones < level.Max_number_repetitions.Repetitions) 
+        { 
+            tiempo -= Time.deltaTime;
+            textoTiempo.text = tiempo.ToString("f0");
+            textoRepeticiones.text = repeticiones.ToString() + " / " + level.Max_number_repetitions.Repetitions.ToString();
+            Partida();
+
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+                CambiarDificultad("arriba");
+            if (Input.GetKeyUp(KeyCode.DownArrow))
+                CambiarDificultad("abajo");
+        }
+        else
+        {
+            textoMensaje.text = "Juego terminado";
+
+            for (int i = 0; i < posiciones.Count; i++)
+                posiciones[i].GetComponent<SphereCollider>().enabled = false;
+        }
+    }
+
+    void CargarDatosPartida(String nivel)
+    {
+        string levelFileName = nivel;
+        string levelFilePath = Path.Combine("Assets/Ejercicios/Exergames", levelFileName);
+        if (File.Exists(levelFilePath))
+        {
             string dataLevelAsJson = File.ReadAllText(levelFilePath);
             level = JsonUtility.FromJson<ExergameLvl>(dataLevelAsJson);
             UnityEngine.Debug.Log("Successfully loaded data level file.");
 
-            positionCamera = exergame.Camera_setup.Position;
-            rotationCamera = exergame.Camera_setup.Rotation;
             articulacionPrincipal = level.Gameplay[0].Involved_joint;
             articulaciones = level.Gameplay[0].Joints;
             tiempo = level.Clock.Countdown;
             textoTiempo.text = tiempo.ToString();
-            textoDescripcion.text = exergame.Description;
 
             for (int i = 0; i < level.Trajectories.Positions.Count; i++)
             {
@@ -70,25 +108,7 @@ public class ExergameLoader : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Cannot load exergame data!");
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (tiempo >= 0 & repeticiones < level.Max_number_repetitions.Repetitions) { 
-            tiempo -= Time.deltaTime;
-            textoTiempo.text = tiempo.ToString("f0");
-            textoRepeticiones.text = repeticiones.ToString() + " / " + level.Max_number_repetitions.Repetitions.ToString();
-            Partida();
-        }
-        else
-        {
-            textoMensaje.text = "Juego terminado";
-
-            for (int i = 0; i < posiciones.Count; i++)
-                posiciones[i].GetComponent<SphereCollider>().enabled = false;
+            Debug.LogError("Cannot load level data!");
         }
     }
 
@@ -110,6 +130,52 @@ public class ExergameLoader : MonoBehaviour
                 esferasActivadas++;
                 IncrementarPuntuacion(exergame.Score.Activated);
                 posiciones[esferasActivadas].GetComponent<SphereCollider>().enabled = true;
+            }
+        }
+    }
+
+    void CambiarDificultad(String tecla)
+    {
+        if (tecla.Equals("arriba"))
+        {
+            if (level.Level == exergame.Levels)
+            {
+                Debug.Log("no se puede subir mas la dificultad");
+            }
+            else
+            {
+                for (int i = 0; i < posiciones.Count; i++)
+                    Destroy(posiciones[i]);
+
+                posiciones.Clear();
+
+                CargarDatosPartida(exergame.Name + "Lvl" + (level.Level + 1) + ".json");
+                esferasActivadas = 0;
+                puntuacion = 0;
+                textoPuntuacion.text = puntuacion.ToString();
+                repeticiones = 0;
+                textoRepeticiones.text = repeticiones.ToString() + " / " + level.Max_number_repetitions.Repetitions.ToString();
+            }
+        }
+        if (tecla.Equals("abajo"))
+        {
+            if (level.Level == 1)
+            {
+                Debug.Log("no se puede bajar mas la dificultad");
+            }
+            else
+            {
+                for (int i = 0; i < posiciones.Count; i++)
+                    Destroy(posiciones[i]);
+
+                posiciones.Clear();
+
+                CargarDatosPartida(exergame.Name + "Lvl" + (level.Level - 1) + ".json");
+                esferasActivadas = 0;
+                puntuacion = 0;
+                textoPuntuacion.text = puntuacion.ToString();
+                repeticiones = 0;
+                textoRepeticiones.text = repeticiones.ToString() + " / " + level.Max_number_repetitions.Repetitions.ToString();
             }
         }
     }

@@ -1,4 +1,5 @@
 {
+    "Name": "elevacionManoDerecha",
     "Description": "Atraviesa con la mano derecha los objetivos desde abajo hacia arriba.",
     "Camera_setup": {
         "Id_camera": "camera1",
@@ -8,5 +9,5 @@
     "Score": {
         "Activated": true
     },
-    "Levels": 2
+    "Levels": 3
 }
