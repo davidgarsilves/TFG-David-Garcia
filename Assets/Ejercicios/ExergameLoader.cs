@@ -14,6 +14,7 @@ public class ExergameLoader : MonoBehaviour
     public TextMeshProUGUI textoPuntuacion;
     public TextMeshProUGUI textoTiempo;
     public TextMeshProUGUI textoIncrementoPuntos;
+    public TextMeshProUGUI textoCambioDificultad;
     public Text textoMensaje;
 
     public AudioSource tocarEsfera;
@@ -140,10 +141,14 @@ public class ExergameLoader : MonoBehaviour
         {
             if (level.Level == exergame.Levels)
             {
-                Debug.Log("no se puede subir mas la dificultad");
+                textoCambioDificultad.text = "No se puede aumentar más la dificultad";
+                StartCoroutine(FadeOutCR(textoCambioDificultad, -1.3f));
             }
             else
             {
+                textoCambioDificultad.text = "Dificultad aumentada";
+                StartCoroutine(FadeOutCR(textoCambioDificultad, -1.3f));
+
                 for (int i = 0; i < posiciones.Count; i++)
                     Destroy(posiciones[i]);
 
@@ -161,10 +166,14 @@ public class ExergameLoader : MonoBehaviour
         {
             if (level.Level == 1)
             {
-                Debug.Log("no se puede bajar mas la dificultad");
+                textoCambioDificultad.text = "No se puede reducir más la dificultad";
+                StartCoroutine(FadeOutCR(textoCambioDificultad, -1.3f));
             }
             else
             {
+                textoCambioDificultad.text = "Dificultad reducida";
+                StartCoroutine(FadeOutCR(textoCambioDificultad, -1.3f));
+
                 for (int i = 0; i < posiciones.Count; i++)
                     Destroy(posiciones[i]);
 
@@ -179,6 +188,20 @@ public class ExergameLoader : MonoBehaviour
             }
         }
     }
+    private IEnumerator FadeOutCR(TextMeshProUGUI texto, float time)
+    {
+        float duration = 0.75f;
+        float currentTime = time;
+        while (currentTime < duration)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, currentTime / duration);
+            texto.color = new Color(texto.color.r, texto.color.g, texto.color.b, alpha);
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        yield break;
+    }
+
 
     void ReiniciarEsferas()
     {
@@ -198,18 +221,8 @@ public class ExergameLoader : MonoBehaviour
             textoPuntuacion.text = puntuacion.ToString();
 
             textoIncrementoPuntos.text = "+ "+level.Gameplay[0].Score_increment.ToString();
-            StartCoroutine(FadeTextToZeroAlpha(2f, textoIncrementoPuntos));
+            StartCoroutine(FadeOutCR(textoIncrementoPuntos, -0.75f));
             tocarEsfera.Play();
-        }
-    }
-
-    public IEnumerator FadeTextToZeroAlpha(float t, TextMeshProUGUI i)
-    {
-        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
-        while (i.color.a > 0.0f)
-        {
-            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
-            yield return null;
         }
     }
 
