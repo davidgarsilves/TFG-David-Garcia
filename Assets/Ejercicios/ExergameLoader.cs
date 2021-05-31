@@ -15,7 +15,10 @@ public class ExergameLoader : MonoBehaviour
     public TextMeshProUGUI textoTiempo;
     public TextMeshProUGUI textoIncrementoPuntos;
     public TextMeshProUGUI textoCambioDificultad;
+    public Image postura;
+    public Image preparacionEjercicio;
     public Text textoMensaje;
+    public GameObject textoEscena;
 
     public AudioSource tocarEsfera;
 
@@ -26,9 +29,11 @@ public class ExergameLoader : MonoBehaviour
 
     private int repeticiones = 0;
     private int puntuacion = 0;
-    private float tiempo;
+    private float tiempoJuego;
     private int esferasActivadas = 0;
     private Boolean repeticionCompleta = false;
+    private float tiempo; //nuevooooooooooooooo
+    private float tiempoComiemzo = 5f;
 
     private const string exergameDataFileName = "elevacionManoDerecha.json";
 
@@ -49,9 +54,26 @@ public class ExergameLoader : MonoBehaviour
 
             positionCamera = exergame.Camera_setup.Position;
             rotationCamera = exergame.Camera_setup.Rotation;
+            
             textoDescripcion.text = exergame.Description;
+            postura.GetComponent<Image>().sprite = Resources.Load<Sprite>("sentado"); // si quiero que tenga los bordes redondeados recortarlos pero luego mantener la forma cuadrada, igual que el circulo cuando cambias el script
 
-            CargarDatosPartida(exergame.Name + "Lvl" + Math.Ceiling(Decimal.Divide(exergame.Levels, 2))+ ".json");
+            CargarDatosPartida(exergame.Name + "Lvl" + Math.Ceiling(Decimal.Divide(exergame.Levels, 2))+ ".json"); //posiblemente haya que hacer dos metodos, este sea el de cargar los datos del nive
+                                                                                                                   //y en un metodo anterior cargar los datos de la partida junton con la posicion de la camara y la foto de la postura
+            postura.enabled = false;
+            textoDescripcion.enabled = false;
+            textoRepeticiones.enabled = false;
+            textoPuntuacion.enabled = false;
+            textoTiempo.enabled = false;
+            tiempoJuego += tiempoComiemzo;
+            for (int i = 0; i < textoEscena.transform.childCount; i++)
+                textoEscena.transform.GetChild(i).gameObject.SetActive(false);
+            Destroy(preparacionEjercicio, tiempoComiemzo);
+            for (int i = 0; i < preparacionEjercicio.transform.childCount; i++)
+                Destroy(preparacionEjercicio.transform.GetChild(i).gameObject, tiempoComiemzo);
+
+            tiempo = Time.time;
+
         }
         else
         {
@@ -59,13 +81,29 @@ public class ExergameLoader : MonoBehaviour
         }
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
-        if (tiempo >= 0 & repeticiones < level.Max_number_repetitions.Repetitions) 
-        { 
-            tiempo -= Time.deltaTime;
-            textoTiempo.text = tiempo.ToString("f0");
+        if (Time.time > tiempo + tiempoComiemzo)
+        {
+            postura.enabled = true;
+            textoDescripcion.enabled = true;
+            textoRepeticiones.enabled = true;
+            textoPuntuacion.enabled = true;
+            textoTiempo.enabled = true;
+           
+            for (int i = 0; i < textoEscena.transform.childCount; i++)
+                textoEscena.transform.GetChild(i).gameObject.SetActive(true);
+            //textoTiempo.enabled = true;
+            posiciones[0].GetComponent<SphereCollider>().enabled = true;
+        }
+
+        if (tiempoJuego >= 0 & repeticiones < level.Max_number_repetitions.Repetitions) 
+        {
+            tiempoJuego -= Time.deltaTime;
+            textoTiempo.text = tiempoJuego.ToString("f0");
             textoRepeticiones.text = repeticiones.ToString() + " / " + level.Max_number_repetitions.Repetitions.ToString();
             Partida();
 
@@ -95,8 +133,8 @@ public class ExergameLoader : MonoBehaviour
 
             articulacionPrincipal = level.Gameplay[0].Involved_joint;
             articulaciones = level.Gameplay[0].Joints;
-            tiempo = level.Clock.Countdown;
-            textoTiempo.text = tiempo.ToString();
+            tiempoJuego = level.Clock.Countdown;
+            textoTiempo.text = tiempoJuego.ToString();
 
             for (int i = 0; i < level.Trajectories.Positions.Count; i++)
             {
@@ -105,7 +143,7 @@ public class ExergameLoader : MonoBehaviour
                 posiciones[i].transform.localScale = new Vector3(level.Scale, level.Scale, level.Scale);
                 posiciones[i].GetComponent<SphereCollider>().enabled = false;
             }
-            posiciones[0].GetComponent<SphereCollider>().enabled = true;
+            //posiciones[0].GetComponent<SphereCollider>().enabled = true;
         }
         else
         {
@@ -201,7 +239,6 @@ public class ExergameLoader : MonoBehaviour
         }
         yield break;
     }
-
 
     void ReiniciarEsferas()
     {
