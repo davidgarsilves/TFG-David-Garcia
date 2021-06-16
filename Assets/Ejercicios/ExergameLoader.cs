@@ -16,11 +16,18 @@ public class ExergameLoader : MonoBehaviour
     public TextMeshProUGUI textoIncrementoPuntos;
     public TextMeshProUGUI textoCambioDificultad;
     public Image postura;
-    public Image preparacionEjercicio;
-    public Text textoMensaje;
     public GameObject textoEscena;
+    public Image preparacionEjercicio;
+    public TextMeshProUGUI textoNombre;
+    public Image preparacionPostura;
+    public TextMeshProUGUI textoPreparacionMensaje;
+    public TextMeshProUGUI textoTiempoPreparacion;
+    public TextMeshProUGUI textoMensajeFinal;
+    
 
     public AudioSource tocarEsfera;
+    public AudioSource sonidoCuentaAtras;
+    public AudioSource sonidoCuentaAtrasYa;
 
     private static string articulacionPrincipal;
     private static float[] positionCamera;
@@ -33,9 +40,9 @@ public class ExergameLoader : MonoBehaviour
     private int esferasActivadas = 0;
     private Boolean repeticionCompleta = false;
     private float tiempo; //nuevooooooooooooooo
-    private float tiempoComiemzo = 5f;
+    private float tiempoComiemzo = 10f;
 
-    private const string exergameDataFileName = "elevacionManoDerecha.json";
+    private const string exergameDataFileName = "Elevacion de mano derecha.json";
 
     private Exergame exergame = new Exergame(); 
     private ExergameLvl level = new ExergameLvl();
@@ -52,13 +59,17 @@ public class ExergameLoader : MonoBehaviour
             exergame = JsonUtility.FromJson<Exergame>(dataExergameAsJson);
             UnityEngine.Debug.Log("Successfully loaded data exergame file.");
 
+            textoNombre.text = exergame.Name;
+            preparacionPostura.GetComponent<Image>().sprite = Resources.Load<Sprite>("normal");
+            textoPreparacionMensaje.text = "Imita la postura de la imagen para realizar el ejercicio";
+
             positionCamera = exergame.Camera_setup.Position;
             rotationCamera = exergame.Camera_setup.Rotation;
             
             textoDescripcion.text = exergame.Description;
-            postura.GetComponent<Image>().sprite = Resources.Load<Sprite>("sentado"); // si quiero que tenga los bordes redondeados recortarlos pero luego mantener la forma cuadrada, igual que el circulo cuando cambias el script
+            postura.GetComponent<Image>().sprite = Resources.Load<Sprite>("normal"); // si quiero que tenga los bordes redondeados recortarlos pero luego mantener la forma cuadrada, igual que el circulo cuando cambias el script
 
-            CargarDatosPartida(exergame.Name + "Lvl" + Math.Ceiling(Decimal.Divide(exergame.Levels, 2))+ ".json"); //posiblemente haya que hacer dos metodos, este sea el de cargar los datos del nive
+            CargarDatosPartida(exergame.Name + " Lvl " + Math.Ceiling(Decimal.Divide(exergame.Levels, 2))+ ".json"); //posiblemente haya que hacer dos metodos, este sea el de cargar los datos del nive
                                                                                                                    //y en un metodo anterior cargar los datos de la partida junton con la posicion de la camara y la foto de la postura
             postura.enabled = false;
             textoDescripcion.enabled = false;
@@ -86,6 +97,8 @@ public class ExergameLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ContadorPreparacionEjercicio();
+
         if (Time.time > tiempo + tiempoComiemzo)
         {
             postura.enabled = true;
@@ -114,7 +127,7 @@ public class ExergameLoader : MonoBehaviour
         }
         else
         {
-            textoMensaje.text = "Juego terminado";
+            textoMensajeFinal.text = "Partida terminada";
 
             for (int i = 0; i < posiciones.Count; i++)
                 posiciones[i].GetComponent<SphereCollider>().enabled = false;
@@ -192,7 +205,7 @@ public class ExergameLoader : MonoBehaviour
 
                 posiciones.Clear();
 
-                CargarDatosPartida(exergame.Name + "Lvl" + (level.Level + 1) + ".json");
+                CargarDatosPartida(exergame.Name + " Lvl " + (level.Level + 1) + ".json");
                 esferasActivadas = 0;
                 puntuacion = 0;
                 textoPuntuacion.text = puntuacion.ToString();
@@ -217,7 +230,7 @@ public class ExergameLoader : MonoBehaviour
 
                 posiciones.Clear();
 
-                CargarDatosPartida(exergame.Name + "Lvl" + (level.Level - 1) + ".json");
+                CargarDatosPartida(exergame.Name + " Lvl " + (level.Level - 1) + ".json");
                 esferasActivadas = 0;
                 puntuacion = 0;
                 textoPuntuacion.text = puntuacion.ToString();
@@ -238,6 +251,25 @@ public class ExergameLoader : MonoBehaviour
             yield return null;
         }
         yield break;
+    }
+
+    void ContadorPreparacionEjercicio() {
+        textoTiempoPreparacion.text = (tiempoComiemzo - Time.time).ToString("f0");
+        if (textoTiempoPreparacion.text == "6" || textoTiempoPreparacion.text == "7")
+            textoTiempoPreparacion.text = "3";
+        else if (textoTiempoPreparacion.text == "4" || textoTiempoPreparacion.text == "5")
+            textoTiempoPreparacion.text = "2";
+        else if (textoTiempoPreparacion.text == "2" || textoTiempoPreparacion.text == "3")
+            textoTiempoPreparacion.text = "1";
+        else if (textoTiempoPreparacion.text == "0" || textoTiempoPreparacion.text == "1")
+            textoTiempoPreparacion.text = "YA!";
+        else
+            textoTiempoPreparacion.text = "";
+
+        if (Math.Round((tiempoComiemzo - Time.time), 1) == 7.6 || Math.Round((tiempoComiemzo - Time.time), 1) == 5.6 || Math.Round((tiempoComiemzo - Time.time), 1) == 3.6)
+            sonidoCuentaAtras.Play();
+        if (Math.Round((tiempoComiemzo - Time.time), 1) == 1.6)
+            sonidoCuentaAtrasYa.Play();
     }
 
     void ReiniciarEsferas()

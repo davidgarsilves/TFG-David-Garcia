@@ -1,36 +1,31 @@
 {
-    "Level": 3,
-    "ExergameName": "elevacionManoDerecha",
-    "Scale": 0.24,
+    "Level": 2,
+    "ExergameName": "Elevacion de mano derecha",
+    "Scale": 0.34,
     "Clock": {
         "Activated": true,
-        "Countdown": 80
+        "Countdown": 100
     },
     "Max_number_repetitions": {
         "Activated": true,
-        "Repetitions": 8
+        "Repetitions": 6
     },
     "Trajectories": {
             "Id_trajectory": "mano-derecha-arriba",
             "Positions": [
                 {
-                    "X": 1.36,
-                    "Y": 2.2,
+                    "X": 1.4,
+                    "Y": 2.65,
                     "Z": 0
                 },
                 {
-                    "X": 1.43,
-                    "Y": 2.7,
+                    "X": 1.285,
+                    "Y": 3.1,
                     "Z": 0
                 },
                 {
-                    "X": 1.33,
-                    "Y": 3.17,
-                    "Z": 0
-                },
-                {
-                    "X": 1.03,
-                    "Y": 3.54,
+                    "X": 1.15,
+                    "Y": 3.53,
                     "Z": 0
                 }
             ]
@@ -46,7 +41,7 @@
                 "arm.l"
             ],
             "Repetition_increment": 1,
-            "Score_increment": 15
+            "Score_increment": 25
         }
     ]
 }
