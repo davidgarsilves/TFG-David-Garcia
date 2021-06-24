@@ -8,7 +8,8 @@ using System.Collections;
 
 public class ExergameLoader : MonoBehaviour
 {
-    public GameObject esfera;
+    public GameObject esfera; 
+    public GameObject objetoExtra;
     public TextMeshProUGUI textoDescripcion;
     public TextMeshProUGUI textoRepeticiones;
     public TextMeshProUGUI textoPuntuacion;
@@ -42,11 +43,14 @@ public class ExergameLoader : MonoBehaviour
     private float tiempo; //nuevooooooooooooooo
     private float tiempoComiemzo = 10f;
 
-    private const string exergameDataFileName = "Elevacion de mano derecha.json";
+    private const string exergameDataFileName = "Colocacion de botella.json";
 
     private Exergame exergame = new Exergame(); 
     private ExergameLvl level = new ExergameLvl();
     private List<GameObject> posiciones = new List<GameObject>();
+
+    //public static bool agarrar = false;
+    private static string objetoMovil;
 
 
     void Awake()
@@ -110,7 +114,7 @@ public class ExergameLoader : MonoBehaviour
             for (int i = 0; i < textoEscena.transform.childCount; i++)
                 textoEscena.transform.GetChild(i).gameObject.SetActive(true);
             //textoTiempo.enabled = true;
-            posiciones[0].GetComponent<SphereCollider>().enabled = true;
+            posiciones[0].GetComponent<Collider>().enabled = true;
         }
 
         if (tiempoJuego >= 0 & repeticiones < level.Max_number_repetitions.Repetitions) 
@@ -118,7 +122,11 @@ public class ExergameLoader : MonoBehaviour
             tiempoJuego -= Time.deltaTime;
             textoTiempo.text = tiempoJuego.ToString("f0");
             textoRepeticiones.text = repeticiones.ToString() + " / " + level.Max_number_repetitions.Repetitions.ToString();
-            Partida();
+
+            if (exergame.Type == "Normal")
+                Partida();
+            if (exergame.Type == "Especial")
+                PartidaEspecial();
 
             if (Input.GetKeyUp(KeyCode.UpArrow))
                 CambiarDificultad("arriba");
@@ -130,7 +138,7 @@ public class ExergameLoader : MonoBehaviour
             textoMensajeFinal.text = "Partida terminada";
 
             for (int i = 0; i < posiciones.Count; i++)
-                posiciones[i].GetComponent<SphereCollider>().enabled = false;
+                posiciones[i].GetComponent<Collider>().enabled = false;
         }
     }
 
@@ -149,14 +157,28 @@ public class ExergameLoader : MonoBehaviour
             tiempoJuego = level.Clock.Countdown;
             textoTiempo.text = tiempoJuego.ToString();
 
-            for (int i = 0; i < level.Trajectories.Positions.Count; i++)
+            if (exergame.Type == "Normal")
+                for (int i = 0; i < level.Trajectories.Positions.Count; i++)
+                {
+                    posiciones.Add(Instantiate(esfera));
+                    posiciones[i].transform.position = new Vector3(level.Trajectories.Positions[i].X, level.Trajectories.Positions[i].Y, level.Trajectories.Positions[i].Z);
+                    posiciones[i].transform.localScale = new Vector3(level.Scale, level.Scale, level.Scale);
+                    posiciones[i].GetComponent<Collider>().enabled = false;
+                }
+
+            if (exergame.Type == "Especial")
             {
+                objetoMovil = esfera.name;
                 posiciones.Add(Instantiate(esfera));
-                posiciones[i].transform.position = new Vector3(level.Trajectories.Positions[i].X, level.Trajectories.Positions[i].Y, level.Trajectories.Positions[i].Z);
-                posiciones[i].transform.localScale = new Vector3(level.Scale, level.Scale, level.Scale);
-                posiciones[i].GetComponent<SphereCollider>().enabled = false;
+                posiciones.Add(Instantiate(objetoExtra));
+                for (int i = 0; i < level.Trajectories.Positions.Count; i++)
+                { 
+                    posiciones[i].transform.position = new Vector3(level.Trajectories.Positions[i].X, level.Trajectories.Positions[i].Y, level.Trajectories.Positions[i].Z);
+                    posiciones[i].transform.localScale = new Vector3(level.Scale, level.Scale, level.Scale);
+                    //posiciones[i].GetComponent<Collider>().enabled = false;
+                }
             }
-            //posiciones[0].GetComponent<SphereCollider>().enabled = true;
+            //posiciones[0].GetComponent<Collider>().enabled = true;
         }
         else
         {
@@ -181,9 +203,20 @@ public class ExergameLoader : MonoBehaviour
             {
                 esferasActivadas++;
                 IncrementarPuntuacion(exergame.Score.Activated);
-                posiciones[esferasActivadas].GetComponent<SphereCollider>().enabled = true;
+                posiciones[esferasActivadas].GetComponent<Collider>().enabled = true;
             }
         }
+    }
+
+    void PartidaEspecial()
+    {
+        /*
+        if (agarrar == true)
+        {
+            posiciones[0].transform.position = ;
+        }
+        */
+
     }
 
     void CambiarDificultad(String tecla)
@@ -278,9 +311,9 @@ public class ExergameLoader : MonoBehaviour
         for (int i = 0; i < posiciones.Count; i++)
         {
             posiciones[i].GetComponent<Renderer>().material.color = new Color(255f / 255f, 229f / 255f, 0f / 255f);
-            posiciones[i].GetComponent<SphereCollider>().enabled = false;
+            posiciones[i].GetComponent<Collider>().enabled = false;
         }
-        posiciones[0].GetComponent<SphereCollider>().enabled = true;
+        posiciones[0].GetComponent<Collider>().enabled = true;
     }
 
     void IncrementarPuntuacion(bool activated)
@@ -313,5 +346,10 @@ public class ExergameLoader : MonoBehaviour
     public static List<string> getJointList()
     {
         return articulaciones;
+    }
+
+    public static string getObjetoMovil()
+    {
+        return objetoMovil;
     }
 }

@@ -70,6 +70,8 @@
     <Compile Include="Assets\Ejercicios\ExergameLoader.cs" />
     <Compile Include="Assets\Ejercicios\ExergameLvl.cs" />
     <Compile Include="Assets\Ejercicios\MainCamera.cs" />
+    <Compile Include="Assets\Ejercicios\ObjetoFijo.cs" />
+    <Compile Include="Assets\Ejercicios\ObjetoMovil.cs" />
     <Compile Include="Assets\Ejercicios\SphereJoint.cs" />
     <Compile Include="Assets\Scripts\AvatarTracker.cs" />
     <Compile Include="Assets\Scripts\BackgroundData.cs" />

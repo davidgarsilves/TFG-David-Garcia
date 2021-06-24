@@ -1,5 +1,5 @@
 {
-    "Name": "Elevacion de mano derecha",
+    "Name": "Colocacion de botella",
     "Description": "Atraviesa con la mano derecha los objetivos desde abajo hacia arriba.",
     "Camera_setup": {
         "Id_camera": "camera1",
@@ -9,6 +9,6 @@
     "Score": {
         "Activated": true
     },
-    "Levels": 3,
-    "Type": "Normal"
+    "Levels": 1,
+    "Type": "Especial"
 }

@@ -2926,7 +2926,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672b1dff23536e84f8e123595d481e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esfera: {fileID: 3355540618645073990, guid: 9d196f0d3584c674bb9b70cc615c5f71, type: 3}
+  esfera: {fileID: 1073708406411446399, guid: f2a2dcdb66e072e47b40de48d85b3ed2, type: 3}
+  objetoExtra: {fileID: 4115585230770520638, guid: 6408e4c732d86a94fb44d4fb5c2ba81e,
+    type: 3}
   textoDescripcion: {fileID: 514686151}
   textoRepeticiones: {fileID: 1780552273}
   textoPuntuacion: {fileID: 1291100043}

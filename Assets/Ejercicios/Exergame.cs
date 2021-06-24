@@ -20,4 +20,5 @@ public class Exergame
     public Camera_setup Camera_setup = new Camera_setup();
     public Score Score = null;
     public int Levels = 0;
+    public string Type = "";
 }
