@@ -55,9 +55,6 @@ public class AvatarTracker : MonoBehaviour
 
     void ProcessSkeleton(Body skeleton)
     {
-        //Vector3 torsoPos = new Vector3(skeleton.JointPositions3D[2].X, -skeleton.JointPositions3D[2].Y, skeleton.JointPositions3D[2].Z);
-        //transform.position = torsoPos;
-
         int jointNum;
         bool esNecesaria = false;
 
