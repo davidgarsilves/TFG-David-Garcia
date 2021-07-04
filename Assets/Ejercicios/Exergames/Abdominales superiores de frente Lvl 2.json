@@ -1,0 +1,50 @@
+{
+    "Level": 2,
+    "ExergameName": "Abdominales superiores de frente",
+    "Scale": 0.5,
+    "Clock": {
+        "Activated": true,
+        "Countdown": 100
+    },
+    "Max_number_repetitions": {
+        "Activated": true,
+        "Repetitions": 6
+    },
+    "Trajectories": {
+            "Id_trajectory": "cabeza",
+            "Positions": [
+                {
+                    "X": -1.2,
+                    "Y": 1.5,
+                    "Z": -0.2
+                },
+                {
+                    "X": -0.7,
+                    "Y": 2,
+                    "Z": -0.2
+                },
+                {
+                    "X": 0,
+                    "Y": 2.5,
+                    "Z": -0.15
+                }
+            ]
+     },
+    "Gameplay": [
+        {
+            "Id_trajectory": "cabeza",
+            "Involved_joint": "head",
+            "Joints": [
+                "body",
+                "chest",
+                "neck",
+                "uperarm.l",
+                "arm.l",
+                "uperarm.r",
+                "arm.r"
+            ],
+            "Repetition_increment": 1,
+            "Score_increment": 25
+        }
+    ]
+}

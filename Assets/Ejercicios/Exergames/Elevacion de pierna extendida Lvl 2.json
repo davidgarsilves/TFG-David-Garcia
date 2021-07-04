@@ -1,0 +1,45 @@
+{
+    "Level": 2,
+    "ExergameName": "Elevacion de pierna extendida",
+    "Scale": 0.5,
+    "Clock": {
+        "Activated": true,
+        "Countdown": 100
+    },
+    "Max_number_repetitions": {
+        "Activated": true,
+        "Repetitions": 6
+    },
+    "Trajectories": {
+            "Id_trajectory": "pie-derecho-arriba",
+            "Positions": [
+                {
+                    "X": 1.8,
+                    "Y": 1.52,
+                    "Z": 0
+                },
+                {
+                    "X": 1.75,
+                    "Y": 2.1,
+                    "Z": 0
+                },
+                {
+                    "X": 1.7,
+                    "Y": 2.7,
+                    "Z": 0
+                }
+            ]
+     },
+    "Gameplay": [
+        {
+            "Id_trajectory": "pie-derecho-arriba",
+            "Involved_joint": "foot.r",
+            "Joints": [
+                "uperleg.r",
+                "leg.r"
+            ],
+            "Repetition_increment": 1,
+            "Score_increment": 25
+        }
+    ]
+}

@@ -10,7 +10,6 @@ public class ExergameLoader : MonoBehaviour
 {
     public GameObject esfera; 
     public GameObject objetoExtra;
-    public TextMeshProUGUI textoDescripcion;
     public TextMeshProUGUI textoRepeticiones;
     public TextMeshProUGUI textoPuntuacion;
     public TextMeshProUGUI textoTiempo;
@@ -21,6 +20,7 @@ public class ExergameLoader : MonoBehaviour
     public Image preparacionEjercicio;
     public TextMeshProUGUI textoNombre;
     public Image preparacionPostura;
+    public GameObject orden;
     public TextMeshProUGUI textoPreparacionMensaje;
     public TextMeshProUGUI textoTiempoPreparacion;
     public TextMeshProUGUI textoMensajeFinal;
@@ -44,12 +44,13 @@ public class ExergameLoader : MonoBehaviour
     private int esferasActivadas = 0;
     private static bool soltar = false;
     private static string objetoMovil;
-
-    private const string exergameDataFileName = "Elevacion de mano derecha.json"; //Elevacion de mano derecha.json    Recogida de botellas.json
+                                                                                //Movimiento de brazo alterno.json      Abdominales superiores de frente
+    private const string exergameDataFileName = "Abdominales superiores de frente.json"; //Elevacion de pierna extendida.json        Elevacion de mano derecha.json      Elevacion de brazo sobre el suelo.json      Recogida de botellas.json
 
     private Exergame exergame = new Exergame(); 
     private ExergameLvl level = new ExergameLvl();
     private List<GameObject> posiciones = new List<GameObject>();
+    private List<GameObject> ordenEsferas = new List<GameObject>();
 
     void Awake()
     {
@@ -65,18 +66,21 @@ public class ExergameLoader : MonoBehaviour
             rotationCamera = exergame.Camera_setup.Rotation;
 
             textoNombre.text = exergame.Name;
-            preparacionPostura.GetComponent<Image>().sprite = Resources.Load<Sprite>("normal"); //aqui hacer que las fotos de las posturas se llamen igual que el ejercicio
+            preparacionPostura.GetComponent<Image>().sprite = Resources.Load<Sprite>(exergame.Name);
+            textoPreparacionMensaje.text = exergame.Description;
+            /*
             if (exergame.Type == "Normal")
                 textoPreparacionMensaje.text = "Imita la postura de la imagen para realizar el ejercicio";
             else
                 textoPreparacionMensaje.text = "Ponte en frente del Kinect como en la imagen y preparate para colocar botellas";  
+            */
 
             CargarDatosPartida(exergame.Name + " Lvl " + Math.Ceiling(Decimal.Divide(exergame.Levels, 2))+ ".json");
                                                                                                                      
-            textoDescripcion.text = exergame.Description;
-            postura.GetComponent<Image>().sprite = Resources.Load<Sprite>("normal");
+            //textoDescripcion.text = exergame.Description;
+            postura.GetComponent<Image>().sprite = Resources.Load<Sprite>(exergame.Name);
             postura.enabled = false;
-            textoDescripcion.enabled = false;
+            //textoDescripcion.enabled = false;
             textoRepeticiones.enabled = false;
             textoPuntuacion.enabled = false;
             textoTiempo.enabled = false;
@@ -87,6 +91,7 @@ public class ExergameLoader : MonoBehaviour
             for (int i = 0; i < preparacionEjercicio.transform.childCount; i++)
                 Destroy(preparacionEjercicio.transform.GetChild(i).gameObject, tiempoComiemzo);
             tiempo = Time.time;
+
         }
         else
         {
@@ -107,7 +112,7 @@ public class ExergameLoader : MonoBehaviour
                 posiciones[0].GetComponent<Collider>().enabled = true;
             }
                 
-            textoDescripcion.enabled = true;
+            //textoDescripcion.enabled = true;
             textoRepeticiones.enabled = true;
             textoPuntuacion.enabled = true;
             textoTiempo.enabled = true;
@@ -165,6 +170,9 @@ public class ExergameLoader : MonoBehaviour
                     posiciones[i].transform.position = new Vector3(level.Trajectories.Positions[i].X, level.Trajectories.Positions[i].Y, level.Trajectories.Positions[i].Z);
                     posiciones[i].transform.localScale = new Vector3(level.Scale, level.Scale, level.Scale);
                     posiciones[i].GetComponent<Collider>().enabled = false;
+
+                    ordenEsferas.Add(Instantiate(orden.transform.GetChild(i).gameObject));
+                    ordenEsferas[i].transform.position = new Vector3(level.Trajectories.Positions[i].X, level.Trajectories.Positions[i].Y, level.Trajectories.Positions[i].Z);
                 }
 
             if (exergame.Type == "Especial")
@@ -215,7 +223,7 @@ public class ExergameLoader : MonoBehaviour
             posiciones[0].GetComponent<Collider>().enabled = false;
             repeticiones += level.Gameplay[0].Repetition_increment;
             textoRepeticiones.text = repeticiones.ToString() + " / " + level.Max_number_repetitions.Repetitions.ToString();
-            posiciones[0].transform.position = new Vector3(level.Trajectories.Positions[1].X, level.Trajectories.Positions[1].Y, level.Trajectories.Positions[1].Z);
+            posiciones[0].transform.position = new Vector3(level.Trajectories.Positions[1].X + 1.3f, level.Trajectories.Positions[1].Y + 0.47f, level.Trajectories.Positions[1].Z);
             IncrementarPuntuacion(exergame.Score.Activated);
             ObjetoMovil.setBotellaAgarrada(false);
             Invoke(nameof(ReiniciarBotella), 2.0f);
@@ -238,9 +246,13 @@ public class ExergameLoader : MonoBehaviour
                 StartCoroutine(FadeOutCR(textoCambioDificultad, -1.3f));
 
                 for (int i = 0; i < posiciones.Count; i++)
+                {
                     Destroy(posiciones[i]);
+                    Destroy(ordenEsferas[i]);
+                }
 
                 posiciones.Clear();
+                ordenEsferas.Clear();
                 CargarDatosPartida(exergame.Name + " Lvl " + (level.Level + 1) + ".json");
                 esferasActivadas = 0;
                 puntuacion = 0;
@@ -262,9 +274,13 @@ public class ExergameLoader : MonoBehaviour
                 StartCoroutine(FadeOutCR(textoCambioDificultad, -1.3f));
 
                 for (int i = 0; i < posiciones.Count; i++)
+                {
                     Destroy(posiciones[i]);
-
+                    Destroy(ordenEsferas[i]);
+                }
+                    
                 posiciones.Clear();
+                ordenEsferas.Clear();
                 CargarDatosPartida(exergame.Name + " Lvl " + (level.Level - 1) + ".json");
                 esferasActivadas = 0;
                 puntuacion = 0;

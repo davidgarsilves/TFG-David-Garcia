@@ -1,0 +1,14 @@
+{
+    "Name": "Elevacion de pierna extendida",
+    "Description": "Atraviesa con el pie derecho los objetivos desde abajo hacia arriba en la postura indicada.",
+    "Camera_setup": {
+        "Id_camera": "camera1",
+        "Position": [0, 2.92, -5.5],
+        "Rotation": [0, 0, 0]
+    },
+    "Score": {
+        "Activated": true
+    },
+    "Levels": 3,
+    "Type": "Normal"
+}

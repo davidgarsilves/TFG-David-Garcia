@@ -1,0 +1,14 @@
+{
+    "Name": "Abdominales superiores de frente",
+    "Description": "Atraviesa con la cabeza los objetivos en orden desde la postura indicada.",
+    "Camera_setup": {
+        "Id_camera": "camera1",
+        "Position": [0, 2.92, -5.5],
+        "Rotation": [0, 0, 0]
+    },
+    "Score": {
+        "Activated": true
+    },
+    "Levels": 3,
+    "Type": "Normal"
+}

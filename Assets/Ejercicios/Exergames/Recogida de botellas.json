@@ -1,9 +1,9 @@
 {
     "Name": "Recogida de botellas",
-    "Description": "Coge la botella que esta encima de la maquina de cafe y ponla en el hueco del estante junto a las demas botellas",
+    "Description": "Coge la botella que esta delante de la maquina de cafe y ponla en el hueco del estante junto a las demas botellas",
     "Camera_setup": {
         "Id_camera": "camera1",
-        "Position": [0, 2.92, -2.88],
+        "Position": [0, 2.92, -2.15],
         "Rotation": [0, 0, 0]
     },
     "Score": {

@@ -1,0 +1,14 @@
+{
+    "Name": "Movimiento de brazo alterno",
+    "Description": "Atraviesa con la mano derecha los objetivos desde arriba hasta el pie izquierdo.",
+    "Camera_setup": {
+        "Id_camera": "camera1",
+        "Position": [0, 2.46, 4.13],
+        "Rotation": [0, -180, 0]
+    },
+    "Score": {
+        "Activated": true
+    },
+    "Levels": 3,
+    "Type": "Normal"
+}
