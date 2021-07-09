@@ -43,9 +43,9 @@ public class ExergameLoader : MonoBehaviour
      
     private int esferasActivadas = 0;
     private static bool soltar = false;
-    private static string objetoMovil;
-                                                                                //Movimiento de brazo alterno.json      Abdominales superiores de frente
-    private const string exergameDataFileName = "Abdominales superiores de frente.json"; //Elevacion de pierna extendida.json        Elevacion de mano derecha.json      Elevacion de brazo sobre el suelo.json      Recogida de botellas.json
+    private static string objetoMovil;                                                   //Para cambiar de ejercicio cambiar el nombre 
+                                                                                         //Movimiento de brazo alterno.json      Abdominales superiores de frente
+    private const string exergameDataFileName = "Abdominales superiores de frente.json"; //Elevacion de pierna extendida.json    Elevacion de brazo sobre el suelo.json      Recogida de botellas.json
 
     private Exergame exergame = new Exergame(); 
     private ExergameLvl level = new ExergameLvl();
